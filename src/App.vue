@@ -1,7 +1,7 @@
 <template>
   <h2>Vuex</h2>
   <div class="post"
-    v-for="post in posts"
+    v-for="post in allPosts"
     :key="post.id"
    >
    <h2>{{post.title}}</h2>
@@ -10,18 +10,13 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
+
 export default {
   name: "App",
-  data() {
-    return {
-      posts: [],
-    };
-  },
-  components: {},
+  computed: mapGetters(['allPosts']),
   async mounted() {
-    const res = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=3");
-    const posts = await res.json();
-    this.posts = posts;
+    this.$store.dispatch("fetchPosts")
   },
 };
 </script>
