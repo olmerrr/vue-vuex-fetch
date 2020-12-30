@@ -4,7 +4,7 @@
 
   <p>Количество постов: {{postsCount}}</p>
   <div class="post"
-    v-for="post in allPosts"
+    v-for="post in validPosts"
     :key="post.id"
    >
    <h2>{{post.title}}</h2>
@@ -18,7 +18,7 @@ import PostForm from './components/PostForm.vue';
 
 export default {
   name: "App",
-  computed: mapGetters(['allPosts', 'postsCount']),
+  computed: mapGetters(['validPosts', 'postsCount']),
   methods: mapActions(['fetchPosts']),
   async mounted() {
     this.fetchPosts(); //количество лимитированых постов

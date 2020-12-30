@@ -1,8 +1,8 @@
 <template>
   <div class="post-form-wrapp">
     <form @submit.prevent="submitForm">
-      <input type="text" placeholder="Title" v-model="inputTitle"/>
-      <input type="text" placeholder="Body" v-model="inputBody"/>
+      <input type="text" placeholder="Title" v-model="title"/>
+      <input type="text" placeholder="Body" v-model="body"/>
       <button>Add</button>
     </form>
   </div>
@@ -13,21 +13,21 @@ export default {
   name: 'post-form',
   data() {
       return {
-        inputTitle: '',
-        inputBody: ''
+        title: '',
+        body: ''
       }
     },
     methods: {
       ...mapMutations(['createPost']),
       submitForm () {
         this.createPost({
-          title: this.inputTitle,
-          body: this.inputBody,
+          title: this.title,
+          body: this.body,
           id: Date.now()
         });
         //очистка инпутов
-        this.inputTitle = '';
-        this.inputBody = '';
+        this.title = '';
+        this.body = '';
       },
     },
   };
