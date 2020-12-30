@@ -1,5 +1,6 @@
 <template>
   <div class="post-form-wrapp">
+    <p>Заполните поля и нажмите кнопку Add</p>
     <form @submit.prevent="submitForm">
       <input type="text" placeholder="Title" v-model="title"/>
       <input type="text" placeholder="Body" v-model="body"/>

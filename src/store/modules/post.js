@@ -32,8 +32,11 @@ export default  {
     allPosts(state) {
       return state.posts;
     },
-    postsCount(state) {
-      return state.posts.length
+    // в геттерах могу обращаться из одного геттера к другому
+    postsCount(state, getters) {
+      return getters.validPosts.length
     }
+    // в геттерах могу обращаться из одного геттера к другому
+
   },
 };
