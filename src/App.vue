@@ -1,5 +1,6 @@
 <template>
   <h2>Vuex</h2>
+  <p>Количество постов: {{postsCount}}</p>
   <div class="post"
     v-for="post in allPosts"
     :key="post.id"
@@ -10,13 +11,15 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex';
+import {mapGetters, mapActions} from 'vuex';
 
 export default {
   name: "App",
-  computed: mapGetters(['allPosts']),
+  computed: mapGetters(['allPosts', 'postsCount']),
+  methods: mapActions(['fetchPosts']),
   async mounted() {
-    this.$store.dispatch("fetchPosts")
+  //   this.$store.dispatch("fetchPosts")
+    this.fetchPosts(4); //количество лимитированых постов
   },
 };
 </script>
