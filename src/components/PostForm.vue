@@ -8,22 +8,36 @@
   </div>
 </template>
 <script>
-  export default {
-    data() {
+  import {mapMutations} from 'vuex';
+export default {
+  name: 'post-form',
+  data() {
       return {
         inputTitle: '',
         inputBody: ''
       }
     },
     methods: {
+      ...mapMutations(['createPost']),
       submitForm () {
-
+        this.createPost({
+          title: this.inputTitle,
+          body: this.inputBody,
+          id: Date.now()
+        });
+        //очистка инпутов
+        this.inputTitle = '';
+        this.inputBody = '';
       },
-    }
+    },
   };
 </script>
 <style scoped>
   .post-form-wrapp {
     padding: 20px;
   }
+  button {
+    border-radius: 4px;
+    width: 70px;
+    }
 </style>

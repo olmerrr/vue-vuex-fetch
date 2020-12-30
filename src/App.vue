@@ -1,5 +1,7 @@
 <template>
   <h2>Vuex</h2>
+  <post-form></post-form>
+
   <p>Количество постов: {{postsCount}}</p>
   <div class="post"
     v-for="post in allPosts"
@@ -8,7 +10,6 @@
    <h2>{{post.title}}</h2>
    <p>{{post.body}}</p>
   </div>
-  <post-form></post-form>
 </template>
 
 <script>
@@ -20,7 +21,7 @@ export default {
   computed: mapGetters(['allPosts', 'postsCount']),
   methods: mapActions(['fetchPosts']),
   async mounted() {
-    this.fetchPosts(4); //количество лимитированых постов
+    this.fetchPosts(); //количество лимитированых постов
   },
   components: {
     PostForm
