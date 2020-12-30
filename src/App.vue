@@ -8,19 +8,23 @@
    <h2>{{post.title}}</h2>
    <p>{{post.body}}</p>
   </div>
+  <post-form></post-form>
 </template>
 
 <script>
 import {mapGetters, mapActions} from 'vuex';
+import PostForm from './components/PostForm.vue';
 
 export default {
   name: "App",
   computed: mapGetters(['allPosts', 'postsCount']),
   methods: mapActions(['fetchPosts']),
   async mounted() {
-  //   this.$store.dispatch("fetchPosts")
     this.fetchPosts(4); //количество лимитированых постов
   },
+  components: {
+    PostForm
+  }
 };
 </script>
 
